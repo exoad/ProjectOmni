@@ -25,6 +25,7 @@ dependencies {
     implementation 'com.google.guava:guava:32.1.1-jre'
     
     implementation 'com.formdev:flatlaf:3.3'
+    implementation 'com.formdev:flatlaf-intellij-themes:3.3'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

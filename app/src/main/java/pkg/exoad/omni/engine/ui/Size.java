@@ -27,7 +27,7 @@ public class Size
         this.height=height;
     }
 
-    public Size offset(double width,double height)
+    public Size transform(double width,double height)
     {
         this.width-=width;
         this.height-=height;

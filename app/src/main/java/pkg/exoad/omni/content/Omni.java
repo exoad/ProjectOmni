@@ -14,14 +14,14 @@ public final class Omni
 {
 
     public static Logger LOG;
-    
-    public static void initializeLogger()    
+
+    public static void initializeLogger()
     {
         if(LOG==null)
-            LOG=Logger.getLogger(Omni.class.getCanonicalName());
+            LOG=Logger.getLogger("OMNI  "); // this is just for padding purposes to look neat in the logging in similarity with the "ENGINE"
         LOG.info("Intialized the OMNI_CONTENT logger.");
     }
-    
+
     private Omni()
     {
     }
