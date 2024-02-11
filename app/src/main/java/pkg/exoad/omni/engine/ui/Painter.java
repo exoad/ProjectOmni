@@ -7,6 +7,7 @@ package pkg.exoad.omni.engine.ui;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.Objects;
+import pkg.exoad.omni.engine.geom.Rect;
 
 /**
  *
@@ -30,18 +31,22 @@ public class Painter
             g2.setRenderingHint(e.key(),e.ref());
     }
 
+    public void fillRect(Rect rect)
+    {
+        g2.fillRect(rect.start.x(),rect.start.y(),(int)rect.width(),(int)rect.
+                height());
+    }
+
     public void color(SwingOperable<Color> color)
     {
         g2.setColor(color.convert());
     }
-    
-    
-    
+
     public void dispose()
     {
         g2.dispose();
     }
-    
+
     @Override
     public Graphics2D convert()
     {

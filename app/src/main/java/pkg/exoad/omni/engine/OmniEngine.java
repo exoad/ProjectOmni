@@ -4,15 +4,19 @@
  * found in the LICENSE file.
  */
 package pkg.exoad.omni.engine;
-import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.intellijthemes.FlatSpacegrayIJTheme;
+import java.awt.Toolkit;
 import java.util.Timer;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import pkg.exoad.omni.engine.env.PlatformUtils;
 import pkg.exoad.omni.engine.ui.UIContainer;
 
 /**
@@ -34,8 +38,6 @@ public final class OmniEngine
     {
     }
 
-    
-    
     public static synchronized Future<Void> launchWindow(UIContainer container)
     {
         LOG.log(Level.INFO,"Launching a window UICONTAINER#{0}",container.
@@ -49,18 +51,28 @@ public final class OmniEngine
         if(LOG==null)
             LOG=Logger.getLogger("ENGINE");
         LOG.info("Initialized the logger for the OMNI_ENGINE");
+        LOG.log(Level.INFO,"My Environment: {0}",PlatformUtils.export());
         if(PERIODIC_THREAD_POOL==null)
             PERIODIC_THREAD_POOL=new Timer(
                     "pkg.exoad#Project_Omnipotent#PERIODIC_THREAD_POOL");
         LOG.info("Initialized the PERIODIC_THREAD_POOL");
+        Runtime.getRuntime().
+                addShutdownHook(new Thread(()->LOG.info(
+                "Going down for shutdown...Bye")));
     }
 
     public static void initializeUI()
     {
         try{
-            UIManager.setLookAndFeel(new FlatDarkLaf());
+            UIManager.setLookAndFeel(new FlatSpacegrayIJTheme());
         }catch(UnsupportedLookAndFeelException ex){
             LOG.log(Level.SEVERE,null,ex);
         }
+        Toolkit.getDefaultToolkit().
+                setDynamicLayout(true);
+        JDialog.setDefaultLookAndFeelDecorated(true);
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        if(PlatformUtils.isMacos())
+            System.setProperty("apple.awt.application.appearance","system");
     }
 }

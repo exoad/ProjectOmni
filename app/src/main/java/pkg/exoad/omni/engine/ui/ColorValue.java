@@ -59,13 +59,13 @@ public class ColorValue
     {
         // #123456 & #123456789
         return hex.length()==7?make(Integer.parseInt(hex.substring(1,3))/255F,
-                                    Integer.parseInt(
-                                            hex.substring(3,5))/255F,Integer.
-                                    parseInt(hex.substring(5,7),16)):make(
-               Integer.parseInt(hex.substring(1,3))/255F,Integer.parseInt(
-               hex.substring(3,5))/255F,Integer.
-               parseInt(hex.substring(5,7),16),Integer.
-               parseInt(hex.substring(7,9),16));
+                Integer.parseInt(
+                        hex.substring(3,5))/255F,Integer.
+                parseInt(hex.substring(5,7),16)/255F):make(
+                Integer.parseInt(hex.substring(1,3))/255F,Integer.parseInt(
+                hex.substring(3,5))/255F,Integer.
+                parseInt(hex.substring(5,7),16)/255F,Integer.
+                parseInt(hex.substring(7,9),16)/255F);
     }
     private float r;
     private float g;

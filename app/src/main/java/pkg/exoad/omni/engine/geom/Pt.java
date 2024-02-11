@@ -13,13 +13,32 @@ public final class Pt
         implements GeomBase<Pt>
 {
 
-    private float x;
-    private float y;
+    public static Pt make(float x,float y)
+    {
+        return new Pt(x,y);
+    }
+
+    public static Pt make(int x,int y)
+    {
+        return new Pt(x,y);
+    }
+    public float x;
+    public float y;
 
     private Pt(float x,float y)
     {
         this.x=x;
         this.y=y;
+    }
+
+    public int x()
+    {
+        return (int)x;
+    }
+
+    public int y()
+    {
+        return (int)y;
     }
 
     @Override

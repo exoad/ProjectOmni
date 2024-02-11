@@ -12,20 +12,30 @@ package pkg.exoad.omni.engine.geom;
 public class Rect
         implements GeomBase<Rect>
 {
+
     public static Rect make(Pt start,Pt end)
     {
         return new Rect(start,end);
     }
-    
     public final Pt start;
     public final Pt end;
-    
+
     private Rect(Pt start,Pt end)
     {
         this.start=start;
         this.end=end;
     }
-    
+
+    public float width()
+    {
+        return end.x-start.x;
+    }
+
+    public float height()
+    {
+        return end.y-start.y;
+    }
+
     @Override
     public float distanceTo(Rect other)
     {

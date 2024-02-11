@@ -39,12 +39,12 @@ public class Size
         return this;
     }
 
-    public double width()
+    public float width()
     {
         return width;
     }
 
-    public double height()
+    public float height()
     {
         return height;
     }
@@ -54,7 +54,7 @@ public class Size
         return (int)width();
     }
 
-    public int widthHeight()
+    public int heightInt()
     {
         return (int)height();
     }
