@@ -17,8 +17,8 @@ public interface GeomBase<T extends GeomBase<T>>
     float translate(Offset delta);
 
     float scale(Offset delta);
-    
+
     float rotate(float theta,Offset center);
-    
+
     float shear(Offset multiplier);
 }

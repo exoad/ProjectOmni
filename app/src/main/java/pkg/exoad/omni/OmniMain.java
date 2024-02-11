@@ -37,6 +37,7 @@ public class OmniMain
         OmniEngine.initializeBase();
         OmniEngine.initializeUI();
         Omni.initializeLogger();
+        pkg.exoad.omni.engine.SharedConstants.USE_DIAGNOSTICS=true;
         Omni.LOG.log(Level.INFO,"Initialized in {0}ms",System.
                 currentTimeMillis()-startTime);
         OmniEngine.launchWindow(

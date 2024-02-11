@@ -9,6 +9,7 @@ import java.util.Objects;
 import java.util.logging.Level;
 import javax.swing.JComponent;
 import pkg.exoad.omni.engine.OmniEngine;
+import pkg.exoad.omni.engine.SharedConstants;
 
 /**
  *
@@ -41,11 +42,12 @@ public class UIDelegate<T extends JComponent>
 
     protected void LOG(Level level,String message)
     {
-        OmniEngine.LOG.log(level,"{0}#{1} {2}",new Object[]
-        {
-            this.getClass().
-            getSimpleName(),id,message
-        });
+        if(SharedConstants.USE_DIAGNOSTICS)
+            OmniEngine.LOG.log(level,"{0}#{1} {2}",new Object[]
+            {
+                this.getClass().
+                getSimpleName(),id,message
+            });
     }
 
     public UIDelegate<T> withAlignmentX(Alignment alignment)

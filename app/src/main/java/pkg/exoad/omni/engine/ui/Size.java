@@ -5,6 +5,8 @@
  */
 package pkg.exoad.omni.engine.ui;
 import java.awt.Dimension;
+import pkg.exoad.omni.engine.StrUtils;
+import pkg.exoad.omni.engine.lang.ClassField;
 
 /**
  *
@@ -63,5 +65,12 @@ public class Size
     public Dimension convert()
     {
         return new Dimension((int)width,(int)height);
+    }
+
+    @Override
+    public String toString()
+    {
+        return StrUtils.objectToString(this.getClass(),ClassField.make("Width",
+                width),ClassField.make("Height",height));
     }
 }

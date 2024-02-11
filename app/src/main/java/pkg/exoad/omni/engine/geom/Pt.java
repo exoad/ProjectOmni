@@ -4,6 +4,8 @@
  * found in the LICENSE file.
  */
 package pkg.exoad.omni.engine.geom;
+import pkg.exoad.omni.engine.StrUtils;
+import pkg.exoad.omni.engine.lang.ClassField;
 
 /**
  *
@@ -41,6 +43,13 @@ public final class Pt
     public int y()
     {
         return (int)y;
+    }
+
+    @Override
+    public String toString()
+    {
+        return StrUtils.objectToString(this.getClass(),ClassField.make("X",x),
+                ClassField.make("Y",y));
     }
 
     @Override
