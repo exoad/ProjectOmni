@@ -23,4 +23,6 @@ public interface UIRootComponent<T extends JComponent>
     {
         exposeInternal().revalidate();
     }
+    
+
 }

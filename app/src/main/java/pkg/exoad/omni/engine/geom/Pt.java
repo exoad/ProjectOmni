@@ -13,6 +13,8 @@ public final class Pt
         implements GeomBase<Pt>
 {
 
+    public static final Pt ZERO_ZERO=Pt.make(0,0);
+
     public static Pt make(float x,float y)
     {
         return new Pt(x,y);

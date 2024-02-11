@@ -3,12 +3,10 @@ import java.util.logging.Level;
 import pkg.exoad.omni.content.Omni;
 import pkg.exoad.omni.content.SharedConstants;
 import pkg.exoad.omni.engine.OmniEngine;
-import pkg.exoad.omni.engine.geom.Pt;
-import pkg.exoad.omni.engine.geom.Rect;
+import pkg.exoad.omni.engine.ui.BorderAlignment;
 import pkg.exoad.omni.engine.ui.ColorValue;
 import pkg.exoad.omni.engine.ui.ContainerCloseOperation;
 import pkg.exoad.omni.engine.ui.DiagnosticsBuilder;
-import pkg.exoad.omni.engine.ui.GraphicsAttributes;
 import pkg.exoad.omni.engine.ui.Size;
 import pkg.exoad.omni.engine.ui.UIContainer;
 import pkg.exoad.omni.engine.ui.UIPanelDelegate;
@@ -45,22 +43,39 @@ public class OmniMain
                 UIContainer.make().
                         withTitle(SharedConstants.WINDOW_TITLE).
                         withSize(Size.make(1200,850)).
-                        withWindowEventListener(DiagnosticsBuilder.
-                                windowEventListener()).
+                        /*
+                         * withWindowEventListener(DiagnosticsBuilder.
+                         * windowEventListener()).
+                         */
                         withCloseOperation(ContainerCloseOperation.KILL).
                         withRootDelegate(UIPanelDelegate.
                                 make("Omni_RootElement").
-                                withPainter((context,painter)->
-                                {
-                                    painter.init(
-                                            GraphicsAttributes.COLOR_RENDER_SPEED);
-                                    painter.color(ColorValue.make("#171615"));
-                                    painter.fillRect(Rect.make(Pt.make(30,30),
-                                            Pt.
-                                                    make(context.size.width()-30,
-                                                            context.size.
-                                                                    height()-30)));
-                                    painter.dispose();
-                                })));
+                                withBorderLayout(10,10).
+                                withBorderDelegate(
+                                        DiagnosticsBuilder.
+                                                makeColorPanelDelegate(
+                                                        "TopLayer",ColorValue.
+                                                                make("#f5d742")),
+                                        BorderAlignment.TOP).
+                                withBorderDelegate(
+                                        UIPanelDelegate.make("BottomLayer").
+                                                withBorderLayout(0,10).
+                                                withBorderDelegate(
+                                                        DiagnosticsBuilder.
+                                                                makeColorPanelDelegate(
+                                                                        "BottomLEFT",
+                                                                        ColorValue.
+                                                                                make("#4298f5")),
+                                                        BorderAlignment.LEFT
+                                                ).
+                                                withBorderDelegate(
+                                                        DiagnosticsBuilder.
+                                                                makeColorPanelDelegate(
+                                                                        "BottomRIGHT",
+                                                                        ColorValue.
+                                                                                make("#cc1b7c")),
+                                                        BorderAlignment.RIGHT),
+                                        BorderAlignment.BOTTOM)
+                        ));
     }
 }

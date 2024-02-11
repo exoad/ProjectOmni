@@ -25,19 +25,31 @@ import pkg.exoad.omni.engine.ui.UIContainer;
  */
 public final class OmniEngine
 {
-    
+
     public static Logger LOG;
     private static Timer PERIODIC_THREAD_POOL;
-    
+
     public static Timer periodicThreadPool()
     {
         return PERIODIC_THREAD_POOL;
     }
-    
+
     private OmniEngine()
     {
     }
-    
+
+    public static <A extends RuntimeException> void panicOn(boolean condition,
+            String message,A cause)
+    { // very naive
+        if(condition)
+        {
+            LOG.log(Level.SEVERE,message,cause);
+            if(cause!=null)
+                throw cause;
+            System.exit(1);
+        }
+    }
+
     public static synchronized Future<Void> launchWindow(UIContainer container)
     {
         LOG.log(Level.INFO,"Launching a window UICONTAINER#{0}",container.
@@ -45,7 +57,7 @@ public final class OmniEngine
         return CompletableFuture.runAsync(()->SwingUtilities.invokeLater(
                 container));
     }
-    
+
     public static void initializeBase()
     {
         if(LOG==null)
@@ -70,7 +82,7 @@ public final class OmniEngine
             System.exit(1);
         }
     }
-    
+
     public static void initializeUI()
     {
         try

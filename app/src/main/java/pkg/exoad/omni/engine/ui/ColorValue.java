@@ -58,12 +58,12 @@ public class ColorValue
     public static ColorValue make(String hex)
     {
         // #123456 & #123456789
-        return hex.length()==7?make(Integer.parseInt(hex.substring(1,3))/255F,
+        return hex.length()==7?make(Integer.parseInt(hex.substring(1,3),16)/255F,
                 Integer.parseInt(
-                        hex.substring(3,5))/255F,Integer.
+                        hex.substring(3,5),16)/255F,Integer.
                 parseInt(hex.substring(5,7),16)/255F):make(
-                Integer.parseInt(hex.substring(1,3))/255F,Integer.parseInt(
-                hex.substring(3,5))/255F,Integer.
+                Integer.parseInt(hex.substring(1,3),16)/255F,Integer.parseInt(
+                hex.substring(3,5),16)/255F,Integer.
                 parseInt(hex.substring(5,7),16)/255F,Integer.
                 parseInt(hex.substring(7,9),16)/255F);
     }

@@ -36,7 +36,7 @@ public class Painter
         g2.fillRect(rect.start.x(),rect.start.y(),(int)rect.width(),(int)rect.
                 height());
     }
-
+        
     public void color(SwingOperable<Color> color)
     {
         g2.setColor(color.convert());

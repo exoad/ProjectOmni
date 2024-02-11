@@ -15,7 +15,7 @@ public final class SharedConstants
 
     public static final String WINDOW_TITLE="Project Omni (build %s)".formatted(
             PublicConstants.VERSION);
-
+    
     private SharedConstants()
     {
     }
