@@ -6,6 +6,8 @@
 package pkg.exoad.omni.engine;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.util.Timer;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
@@ -19,26 +21,27 @@ import pkg.exoad.omni.engine.ui.UIContainer;
  */
 public final class OmniEngine
 {
-    
+
     public static Logger LOG;
     private static Timer PERIODIC_THREAD_POOL;
-    
+
     public static Timer periodicThreadPool()
     {
         return PERIODIC_THREAD_POOL;
     }
-    
+
     private OmniEngine()
     {
     }
-    
-    public static synchronized void launchWindow(UIContainer container)
+
+    public static synchronized Future<Void> launchWindow(UIContainer container)
     {
         LOG.log(Level.INFO,"Launching a window UICONTAINER#{0}",container.
                 hashCode());
-        SwingUtilities.invokeLater(container);
+        return CompletableFuture.runAsync(()->SwingUtilities.invokeLater(
+                container));
     }
-    
+
     public static void initializeBase()
     {
         if(LOG==null)
@@ -49,14 +52,12 @@ public final class OmniEngine
                     "pkg.exoad#Project_Omnipotent#PERIODIC_THREAD_POOL");
         LOG.info("Initialized the PERIODIC_THREAD_POOL");
     }
-    
+
     public static void initializeUI()
     {
-        try
-        {
+        try{
             UIManager.setLookAndFeel(new FlatDarkLaf());
-        }catch(UnsupportedLookAndFeelException ex)
-        {
+        }catch(UnsupportedLookAndFeelException ex){
             LOG.log(Level.SEVERE,null,ex);
         }
     }

@@ -5,6 +5,7 @@
  */
 package pkg.exoad.omni.engine.ui;
 import java.awt.Dimension;
+import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 
 /**
@@ -19,8 +20,8 @@ public class UIContainer
     {
         return new UIContainer();
     }
-    private JFrame internal;
-    
+    private final JFrame internal;
+
     private UIContainer()
     {
         internal=new JFrame();
@@ -29,6 +30,18 @@ public class UIContainer
     public UIContainer withTitle(String title)
     {
         internal.setTitle(title);
+        return this;
+    }
+
+    public UIContainer withWindowEventListener(SwingOperable<WindowListener> e)
+    {
+        internal.addWindowListener(e.convert());
+        return this;
+    }
+
+    public UIContainer withCloseOperation(ContainerCloseOperation op)
+    {
+        internal.setDefaultCloseOperation(op.op());
         return this;
     }
 
