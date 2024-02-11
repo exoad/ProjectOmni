@@ -10,7 +10,8 @@ import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import pkg.exoad.omni.engine.VoidCallback;
+import pkg.exoad.omni.engine.ui.contexts.ContextCallback;
+import pkg.exoad.omni.engine.ui.contexts.DelegateContext;
 
 /**
  *
@@ -24,8 +25,8 @@ public class UIPanelDelegate
     {
         return new UIPanelDelegate(id);
     }
-    private VoidCallback<Painter> earlyPainter;
-    private VoidCallback<Painter> latePainter;
+    private ContextCallback<DelegateContext<JPanel>,Painter> earlyPainter;
+    private ContextCallback<DelegateContext<JPanel>,Painter> latePainter;
 
     private UIPanelDelegate(String id)
     {
@@ -36,27 +37,35 @@ public class UIPanelDelegate
             public void paintComponent(Graphics g)
             {
                 if(earlyPainter!=null)
-                    earlyPainter.call(new Painter((Graphics2D)g));
+                    earlyPainter.
+                            call(DelegateContext.make(UIPanelDelegate.this), // lowkey, most unintuitive part of java is this ref to outer class
+                                    new Painter(
+                                            (Graphics2D)g));
                 super.paintComponent(g);
                 if(latePainter!=null)
-                    latePainter.call(new Painter((Graphics2D)g));
+                    latePainter.call(DelegateContext.make(UIPanelDelegate.this),
+                            new Painter(
+                                    (Graphics2D)g));
             }
         };
     }
 
-    public UIPanelDelegate withEarlyPainter(VoidCallback<Painter> cb)
+    public UIPanelDelegate withEarlyPainter(
+            ContextCallback<DelegateContext<JPanel>,Painter> cb)
     {
         earlyPainter=cb;
         return this;
     }
 
-    public UIPanelDelegate withLatePainter(VoidCallback<Painter> cb)
+    public UIPanelDelegate withLatePainter(
+            ContextCallback<DelegateContext<JPanel>,Painter> cb)
     {
         latePainter=cb;
         return this;
     }
 
-    public UIPanelDelegate withPainter(VoidCallback<Graphics2D> cb)
+    public UIPanelDelegate withPainter(
+            ContextCallback<DelegateContext<JPanel>,Painter> cb)
     {
         return withLatePainter(cb);
     }
@@ -64,7 +73,7 @@ public class UIPanelDelegate
     public UIPanelDelegate withBoxLayout(Axis axis)
     {
         rootElement.setLayout(new BoxLayout(this.exposeInternal(),
-                                            axis==Axis.X?BoxLayout.X_AXIS:BoxLayout.Y_AXIS));
+                axis==Axis.X?BoxLayout.X_AXIS:BoxLayout.Y_AXIS));
         return this;
     }
 

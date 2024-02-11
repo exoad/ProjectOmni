@@ -18,6 +18,11 @@ public class Size
     {
         return new Size(width,height);
     }
+
+    public static Size make(Dimension dim)
+    {
+        return new Size(dim.width,dim.height);
+    }
     private float width;
     private float height;
 

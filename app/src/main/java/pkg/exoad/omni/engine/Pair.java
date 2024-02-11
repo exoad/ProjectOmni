@@ -3,27 +3,27 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-package pkg.exoad.omni.engine.geom;
+package pkg.exoad.omni.engine;
 
 /**
  *
  * @author Jack Meng (exoad)
  */
-public final class Offset
+public class Pair<A,B>
 {
 
-    public final float dx;
-    public final float dy;
+    public A first;
+    public B second;
 
-    public Offset(float dx,float dy)
+    public Pair(A first,B second)
     {
-        this.dx=dx;
-        this.dy=dy;
+        this.first=first;
+        this.second=second;
     }
 
     @Override
     public String toString()
     {
-        return "Offset[dX="+dx+",dY="+dy+"]";
+        return "Pair[First="+first+",Second="+second+"]";
     }
 }

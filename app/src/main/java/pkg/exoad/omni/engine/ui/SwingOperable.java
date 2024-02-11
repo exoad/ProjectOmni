@@ -19,4 +19,5 @@ public interface SwingOperable<T>
      * @return The converted element
      */
     public T convert();
+
 }

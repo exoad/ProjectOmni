@@ -25,7 +25,7 @@ public class UIDelegate<T extends JComponent>
         return e;
     }
     protected T rootElement;
-    private String id;
+    protected String id;
 
     public UIDelegate(String id)
     {

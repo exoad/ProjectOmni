@@ -34,7 +34,7 @@ public class OmniMain
                                 windowEventListener()).
                         withCloseOperation(ContainerCloseOperation.KILL).
                         withRootDelegate(UIPanelDelegate.
-                                make("Omni_RootElement").withPainter((g2)->{
+                                make("Omni_RootElement").withPainter((context,g2)->{
                                 })));
         Runtime.getRuntime().
                 addShutdownHook(new Thread(()->Omni.LOG.info(
