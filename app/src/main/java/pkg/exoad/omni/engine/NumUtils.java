@@ -9,8 +9,15 @@ package pkg.exoad.omni.engine;
  *
  * @author Jack Meng (exoad)
  */
-@FunctionalInterface
-public interface VoidCallback<A>
+public final class NumUtils
 {
-    void call(A res);
+
+    public static float clampFloat(float value,float min,float max)
+    {
+        return value<min?min:value>max?max:value;
+    }
+
+    private NumUtils()
+    {
+    }
 }

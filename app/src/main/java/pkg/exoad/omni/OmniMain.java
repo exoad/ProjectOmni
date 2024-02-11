@@ -6,6 +6,7 @@ import pkg.exoad.omni.engine.ui.ContainerCloseOperation;
 import pkg.exoad.omni.engine.ui.DiagnosticsBuilder;
 import pkg.exoad.omni.engine.ui.Size;
 import pkg.exoad.omni.engine.ui.UIContainer;
+import pkg.exoad.omni.engine.ui.UIPanelDelegate;
 
 public class OmniMain
 {
@@ -31,7 +32,10 @@ public class OmniMain
                         withSize(Size.make(1200,850)).
                         withWindowEventListener(DiagnosticsBuilder.
                                 windowEventListener()).
-                        withCloseOperation(ContainerCloseOperation.KILL));
+                        withCloseOperation(ContainerCloseOperation.KILL).
+                        withRootDelegate(UIPanelDelegate.
+                                make("Omni_RootElement").withPainter((g2)->{
+                                })));
         Runtime.getRuntime().
                 addShutdownHook(new Thread(()->Omni.LOG.info(
                 "Omni is shutting down...")));

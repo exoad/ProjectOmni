@@ -3,14 +3,13 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-package pkg.exoad.omni.engine;
+package pkg.exoad.omni.engine.ui;
 
 /**
  *
  * @author Jack Meng (exoad)
  */
-@FunctionalInterface
-public interface VoidCallback<A>
+public enum Axis
 {
-    void call(A res);
+    X,Y;
 }

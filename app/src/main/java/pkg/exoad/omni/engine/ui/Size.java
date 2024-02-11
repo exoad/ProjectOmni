@@ -14,14 +14,14 @@ public class Size
         implements SwingOperable<Dimension>
 {
 
-    public static Size make(double width,double height)
+    public static Size make(float width,float height)
     {
         return new Size(width,height);
     }
-    private double width;
-    private double height;
+    private float width;
+    private float height;
 
-    private Size(double width,double height)
+    private Size(float width,float height)
     {
         this.width=width;
         this.height=height;

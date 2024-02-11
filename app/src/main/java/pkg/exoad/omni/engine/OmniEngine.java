@@ -34,6 +34,8 @@ public final class OmniEngine
     {
     }
 
+    
+    
     public static synchronized Future<Void> launchWindow(UIContainer container)
     {
         LOG.log(Level.INFO,"Launching a window UICONTAINER#{0}",container.

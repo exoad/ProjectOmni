@@ -10,7 +10,7 @@ package pkg.exoad.omni.engine;
  * @author Jack Meng (exoad)
  */
 @FunctionalInterface
-public interface VoidCallback<A>
+public interface SupplierCallback<A>
 {
-    void call(A res);
+    A call();
 }
