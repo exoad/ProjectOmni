@@ -3,13 +3,20 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-package pkg.exoad.omni.engine;
-
+package pkg.exoad.omni.engine.ui;
+import javax.swing.JPanel;
 /**
  *
  * @author Jack Meng (exoad)
  */
-public interface VoidCallback<A>
+public class UIPanelDelegate
+        extends UIDelegate<JPanel>
 {
-    void call(A res);
+
+
+
+    public UIPanelDelegate(String id)
+    {
+        super(id);
+    }
 }

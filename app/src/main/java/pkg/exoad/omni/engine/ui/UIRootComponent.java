@@ -1,6 +1,6 @@
 /*
  * Copyright 2024 Jack Meng (exoad). All rights reserved.
- * Use of this source code is governed by a BSD-style license that can
+ * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 package pkg.exoad.omni.engine.ui;
@@ -13,12 +13,12 @@ import javax.swing.JComponent;
 public interface UIRootComponent<T extends JComponent>
 {
     public T exposeInternal();
-    
+
     default void refresh()
     {
         exposeInternal().repaint();
     }
-    
+
     public default void hardRefresh()
     {
         exposeInternal().revalidate();

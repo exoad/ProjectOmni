@@ -74,6 +74,11 @@
 			<attribute name="gradle.buildServer" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/error/.gradle/caches/modules-2/files-2.1/com.formdev/flatlaf-intellij-themes/3.3/dbc4270d10b148058595426dfe7ae24b69c8c5a8/flatlaf-intellij-themes-3.3.jar" sourcepath="C:/Users/error/.gradle/caches/modules-2/files-2.1/com.formdev/flatlaf-intellij-themes/3.3/fd61d6a6654431ab91ad64304af8f69386245497/flatlaf-intellij-themes-3.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/error/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1dcf1de382a0bf95a3d8b0849546c88bac1292c9/failureaccess-1.0.1.jar" sourcepath="C:/Users/error/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1d064e61aad6c51cc77f9b59dc2cccc78e792f5a/failureaccess-1.0.1-sources.jar">
 		<attributes>
 			<attribute name="gradle.buildServer" value="true"/>

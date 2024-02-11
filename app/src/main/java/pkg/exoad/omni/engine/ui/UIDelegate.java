@@ -1,6 +1,6 @@
 /*
  * Copyright 2024 Jack Meng (exoad). All rights reserved.
- * Use of this source code is governed by a BSD-style license that can
+ * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 package pkg.exoad.omni.engine.ui;
@@ -31,24 +31,24 @@ public class UIDelegate<T extends JComponent>
     {
         this.id=id;
     }
-    
+
     public String id()
     {
         return id;
     }
-    
+
     public UIDelegate<T> withAlignmentX(Alignment alignment)
     {
         rootElement.setAlignmentX(alignment.axis());
         return this;
     }
-    
+
     public UIDelegate<T> withAlignmentY(Alignment alignment)
     {
         rootElement.setAlignmentY(alignment.axis());
         return this;
     }
-    
+
     public UIDelegate<T> withVisibility(boolean visibility)
     {
         rootElement.setVisible(visibility);
@@ -60,7 +60,7 @@ public class UIDelegate<T extends JComponent>
         rootElement.setSize(size.convert());
         return this;
     }
-    
+
     public UIDelegate<T> withPrefSize(SwingOperable<Dimension> size)
     {
         rootElement.setPreferredSize(size.convert());
