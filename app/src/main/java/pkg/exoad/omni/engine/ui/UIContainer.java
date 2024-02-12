@@ -14,8 +14,7 @@ import javax.swing.JFrame;
  */
 public class UIContainer
         implements Runnable
-{
-
+{    
     public static UIContainer make()
     {
         return new UIContainer();

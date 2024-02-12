@@ -13,9 +13,9 @@ import pkg.exoad.omni.engine.ui.UIPanelDelegate;
 
 public class OmniMain
 {
-
+    
     public static long startTime;
-
+    
     static
     {
         startTime=System.currentTimeMillis();
@@ -23,7 +23,7 @@ public class OmniMain
                 "[%1$tY.%1$tm.%1$td-%1$tH:%1$tM:%1$tS] [%4$s] %3$s | %5$s%6$s%n");
         System.setProperty("sun.java2d.opengl","True");
     }
-
+    
     public static void main(String... args)
     {
         StringBuilder sb=new StringBuilder();
@@ -40,6 +40,12 @@ public class OmniMain
         pkg.exoad.omni.engine.SharedConstants.USE_DIAGNOSTICS=true;
         Omni.LOG.log(Level.INFO,"Initialized in {0}ms",System.
                 currentTimeMillis()-startTime);
+        OmniEngine.launchWindow(UIContainer.make().
+                withTitle("DEBUG Memory Diagnostics").
+                withSize(Size.make(600,600)).
+                withCloseOperation(ContainerCloseOperation.KILL).
+                withRootDelegate(UIPanelDelegate.make(
+                        "Omni_MemDiagnosticsRootElement")));
         OmniEngine.launchWindow(
                 UIContainer.make().
                         withTitle(SharedConstants.WINDOW_TITLE).

@@ -4,22 +4,17 @@
  * found in the LICENSE file.
  */
 package pkg.exoad.omni.engine.ui;
-import java.awt.Dimension;
-import java.util.Objects;
-import java.util.logging.Level;
 import javax.swing.JComponent;
-import pkg.exoad.omni.engine.OmniEngine;
-import pkg.exoad.omni.engine.SharedConstants;
 
 /**
  *
  * @author Jack Meng (exoad)
  */
-public class UIDelegate<T extends JComponent>
-        implements UIRootComponent<T>
+public class UIDelegate<T extends UIComponent<A extends JComponent>> extends UIComponent<A>
 {
 
-    public static <A extends JComponent> UIDelegate<A> makeWith(String id,
+    public static <A extends UIComponent<? extends JComponent>> UIDelegate<A> makeWith(
+            String id,
             A component)
     {
         Objects.requireNonNull(id);
@@ -27,17 +22,12 @@ public class UIDelegate<T extends JComponent>
         e.setRootElement(component);
         return e;
     }
-    protected T rootElement;
-    protected String id;
-
-    public UIDelegate(String id)
+    
+    private T rootElement;
+    
+    protected UIDelegate(String id)
     {
-        this.id=id;
-    }
-
-    public String id()
-    {
-        return id;
+        
     }
 
     protected void LOG(Level level,String message)
@@ -46,7 +36,7 @@ public class UIDelegate<T extends JComponent>
             OmniEngine.LOG.log(level,"{0}#{1} {2}",new Object[]
             {
                 this.getClass().
-                getSimpleName(),id,message
+                getSimpleName(),id(),message
             });
     }
 

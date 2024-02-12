@@ -71,9 +71,8 @@ public final class OmniEngine
                 PERIODIC_THREAD_POOL=new Timer(
                         "pkg.exoad#Project_Omnipotent#PERIODIC_THREAD_POOL");
             LOG.info("Initialized the PERIODIC_THREAD_POOL");
-            Runtime.getRuntime().
-                    addShutdownHook(new Thread(()->LOG.info(
-                    "Going down for shutdown...Bye")));
+            SysUtils.shutdownHook(()->LOG.info(
+                    "Going down for shutdown...Bye"));
         }else
         {
             LOG.log(Level.SEVERE,
